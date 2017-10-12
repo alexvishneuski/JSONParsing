@@ -76,6 +76,26 @@ public class UserParserTest {
         final IUsersList userListWithObject = usersListParserFactory.createParserForResponceWithObject(responseWithObject).parse();
         assertTrue(userListWithObject.getUsersList().size() == 2);
 
+
+    }
+    //HOME WORK AREA
+    @Test
+    public void parseJSONObject() throws Exception {
+        //prepared response with jsonObject
+        InputStream mockedInputStream = Mocks.stream("user/homework_json_object_preparing.json");
+        when(mHttpClient.request(Matchers.anyString())).thenReturn(mockedInputStream);
+        InputStream response = mHttpClient.request("http://myBackend/getAliaksandrInfo");
+
+
+    }
+    @Test
+    public void parseJSONOArray() throws Exception {
+        //prepared response with jsonArray
+        InputStream mockedInputStream = Mocks.stream("user/homework_json_array_preparing.json");
+        when(mHttpClient.request(Matchers.anyString())).thenReturn(mockedInputStream);
+        InputStream response = mHttpClient.request("http://myBackend/getFamilyInfo");
+
+
     }
 
 }
