@@ -37,10 +37,11 @@ public class UserParserTest {
     private static final int EXPECTED_ID = 1;
     private static final String EXPECTED_NAME = "First Name and Last Name";
     private static final String EXPECTED_AVATAR = "http://placehold.it/32x32";
-
+//classMember initialization
     private IHttpClient mHttpClient;
 
     @Before
+    //interfaceMocking
     public void setUp() {
         mHttpClient = mock(IHttpClient.class);
     }
