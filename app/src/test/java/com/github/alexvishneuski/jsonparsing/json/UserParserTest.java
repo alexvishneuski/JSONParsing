@@ -4,6 +4,7 @@ import com.github.alexvishneuski.jsonparsing.BuildConfig;
 import com.github.alexvishneuski.jsonparsing.http.IHttpClient;
 import com.github.alexvishneuski.jsonparsing.mocks.Mocks;
 import com.github.alexvishneuski.jsonparsing.utils.Constants;
+import com.github.alexvishneuski.jsonparsing.utils.IOUtils;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -37,7 +38,7 @@ public class UserParserTest {
     private static final int EXPECTED_ID = 1;
     private static final String EXPECTED_NAME = "First Name and Last Name";
     private static final String EXPECTED_AVATAR = "http://placehold.it/32x32";
-//classMember initialization
+    //classMember initialization
     private IHttpClient mHttpClient;
 
     @Before
@@ -78,22 +79,35 @@ public class UserParserTest {
 
 
     }
+
     //HOME WORK AREA
     @Test
-    public void parseJSONObject() throws Exception {
+    public void parseJSONObjectHW() throws Exception {
         //prepared response with jsonObject
         InputStream mockedInputStream = Mocks.stream("user/homework_json_object_preparing.json");
         when(mHttpClient.request(Matchers.anyString())).thenReturn(mockedInputStream);
         InputStream response = mHttpClient.request("http://myBackend/getAliaksandrInfo");
 
+        //parsed response over JSONObject
+        final UserParserFactory userParserFactory = new UserParserFactory();
+        final IUser user = userParserFactory.createParser(IOUtils.toString(response)).parse();
 
+
+        assertEquals(99, user.getId());
+        assertEquals("Aliaksandr Vishneuski", user.getName());
+        assertEquals("http://vk.com/dscfd/dsf/.../32.jpg", user.getAvatar());
     }
+
     @Test
-    public void parseJSONOArray() throws Exception {
+    public void parseJSONArrayHW() throws Exception {
         //prepared response with jsonArray
         InputStream mockedInputStream = Mocks.stream("user/homework_json_array_preparing.json");
         when(mHttpClient.request(Matchers.anyString())).thenReturn(mockedInputStream);
         InputStream response = mHttpClient.request("http://myBackend/getFamilyInfo");
+
+        //parsed response over JSONArray
+        final UsersListParserFactory usersListParserFactory = new UsersListParserFactory();
+        final IUsersList userList = usersListParserFactory.createParserForResponceWithJSONArray(response).parse();
 
 
     }

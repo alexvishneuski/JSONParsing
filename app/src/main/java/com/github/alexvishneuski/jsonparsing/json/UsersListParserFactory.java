@@ -11,4 +11,8 @@ public class UsersListParserFactory {
     public IUserListParser createParserForResponceWithObject(InputStream pSource) {
         return new UserListGsonParserWithObject(pSource);
     }
+
+    public IUserListParser createParserForResponceWithJSONArray(InputStream pSource) {
+        return new UsersListJSONObjectParser(pSource);
+    }
 }
