@@ -1,5 +1,6 @@
-package com.github.alexvishneuski.jsonparsing.json;
+package com.github.alexvishneuski.jsonparsing.json.model.gsonimpl;
 
+import com.github.alexvishneuski.jsonparsing.json.model.IUser;
 import com.google.gson.annotations.SerializedName;
 
 public class UserGson implements IUser {
