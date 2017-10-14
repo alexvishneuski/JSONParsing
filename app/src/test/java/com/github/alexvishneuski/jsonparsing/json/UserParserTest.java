@@ -153,4 +153,6 @@ public class UserParserTest {
         assertEquals(userList.getUsersList().get(0).getName(), "Aliaksandr Vishneuski");
     }
 
+    public static class test {
+    }
 }
