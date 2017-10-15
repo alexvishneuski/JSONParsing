@@ -1,27 +1,83 @@
-{
-  "invoiceNumber": 29,
-  "commonInfo": {
-    "created": "06-05-2017 01:43:35",
-    "contractStatus": "EXECUTED",
-    "totalAmount": 250,
-    "customerCompanyName": "Britsko"
+[
+  {
+    "invoiceNumber": 29,
+    "commonInfo": {
+      "created": "06-05-2017 01:43:35",
+      "contractStatus": "EXECUTED",
+      "totalAmount": 250,
+      "customerCompanyName": "Britsko"
+    },
+    "details": [
+      {
+        "itemName": "Modified Item: 80",
+        "itemVariantPrice": 10
+      },
+      {
+        "itemName": "Modified Item: 80",
+        "itemVariantPrice": 10
+      },
+      {
+        "itemName": "Modified Item: 80",
+        "itemVariantPrice": 10
+      },
+      {
+        "itemName": "Modified Item: 80",
+        "itemVariantPrice": 10
+      }
+    ]
   },
-  "details": [
-    {
-      "itemName": "Modified Item: 80",
-      "itemVariantPrice": 10
+  {
+    "invoiceNumber": 30,
+    "commonInfo": {
+      "created": "07-05-2017 01:43:35",
+      "contractStatus": "EXECUTED",
+      "totalAmount": 350,
+      "customerCompanyName": "Lev"
     },
-    {
-      "itemName": "Modified Item: 80",
-      "itemVariantPrice": 10
+    "details": [
+      {
+        "itemName": "Modified Item: 82",
+        "itemVariantPrice": 63
+      },
+      {
+        "itemName": "Modified Item: 87",
+        "itemVariantPrice": 45
+      },
+      {
+        "itemName": "Modified Item: 81",
+        "itemVariantPrice": 110
+      },
+      {
+        "itemName": "Modified Item: 79",
+        "itemVariantPrice": 45
+      }
+    ]
+  },
+  {
+    "invoiceNumber": 31,
+    "commonInfo": {
+      "created": "08-05-2017 01:43:35",
+      "contractStatus": "EXECUTED",
+      "totalAmount": 450,
+      "customerCompanyName": "Dorn"
     },
-    {
-      "itemName": "Modified Item: 80",
-      "itemVariantPrice": 10
-    },
-    {
-      "itemName": "Modified Item: 80",
-      "itemVariantPrice": 10
-    }
-  ]
-}
+    "details": [
+      {
+        "itemName": "Modified Item: 2",
+        "itemVariantPrice": 18
+      },
+      {
+        "itemName": "Modified Item: 333",
+        "itemVariantPrice": 13
+      },
+      {
+        "itemName": "Modified Item: 49",
+        "itemVariantPrice": 11
+      },
+      {
+        "itemName": "Modified Item: 80",
+        "itemVariantPrice": 15
+      }
+    ]
+  }
+]

@@ -1,8 +1,14 @@
 package com.github.alexvishneuski.jsonparsing.simpleinvoicejson.parser;
 
+import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.factory.InvoiceParserFactory;
 import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.Invoice;
+import com.github.alexvishneuski.jsonparsing.utils.IOUtils;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JSONInvoiceListParserImpl implements IInvoiceListParser {
@@ -15,7 +21,24 @@ public class JSONInvoiceListParserImpl implements IInvoiceListParser {
 
     @Override
     public List<Invoice> parce() throws Exception {
-        return null;
+
+        JSONArray jsonArray = new JSONArray(IOUtils.toString(mInputStream));
+
+        System.out.println(jsonArray);
+
+        List<Invoice> invoices = new ArrayList<>();
+        Invoice invoice;
+
+        for (int n = 0; n < jsonArray.length(); n++) {
+            JSONObject invoiceJSON = jsonArray.getJSONObject(n);
+            System.out.println(invoiceJSON);
+
+            invoice = new InvoiceParserFactory().createJsonParser(invoiceJSON.toString()).parse();
+            invoices.add(invoice);
+
+        }
+
+        return invoices;
     }
 
 }

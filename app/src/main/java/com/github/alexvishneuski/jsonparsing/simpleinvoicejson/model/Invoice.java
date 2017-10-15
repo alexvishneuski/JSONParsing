@@ -1,8 +1,9 @@
 package com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Invoice {
+public class Invoice implements Serializable {
 
     //id of an invoice
     private Integer invoiceNumber;
