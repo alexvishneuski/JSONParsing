@@ -14,6 +14,18 @@ public class Invoice {
     public Invoice() {
     }
 
+    public void setInvoiceNumber(Integer invoiceNumber) {
+        this.invoiceNumber = invoiceNumber;
+    }
+
+    public void setCommonInfo(ContractCommonInfo commonInfo) {
+        this.commonInfo = commonInfo;
+    }
+
+    public void setDetails(List<ContractDetail> details) {
+        this.details = details;
+    }
+
     public Integer getInvoiceNumber() {
         return invoiceNumber;
     }

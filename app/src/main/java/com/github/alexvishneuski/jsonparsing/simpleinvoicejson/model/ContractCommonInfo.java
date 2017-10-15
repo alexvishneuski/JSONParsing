@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 public class ContractCommonInfo {
 
     // contract attributes
-    private Integer contractId;
+    //private Integer contractId;
     private Timestamp created;
     private ContractStatus contractStatus;
     //private PayForm payForm;
@@ -27,9 +27,23 @@ public class ContractCommonInfo {
     public ContractCommonInfo() {
     }
 
-    public Integer getContractId() {
-        return contractId;
+
+    public void setCreated(Timestamp created) {
+        this.created = created;
     }
+
+    public void setContractStatus(ContractStatus contractStatus) {
+        this.contractStatus = contractStatus;
+    }
+
+    public void setTotalAmount(BigDecimal totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public void setCustomerCompanyName(String customerCompanyName) {
+        this.customerCompanyName = customerCompanyName;
+    }
+
 
     public Timestamp getCreated() {
         return created;

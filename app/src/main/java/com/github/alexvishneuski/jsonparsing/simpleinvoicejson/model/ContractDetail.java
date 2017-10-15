@@ -17,6 +17,14 @@ public class ContractDetail {
     public ContractDetail() {
     }
 
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    public void setItemVariantPrice(BigDecimal itemVariantPrice) {
+        this.itemVariantPrice = itemVariantPrice;
+    }
+
     public String getItemName() {
         return itemName;
     }

@@ -1,27 +1,51 @@
 {
   "invoiceNumber": 29,
   "commonInfo": {
-    "contractId": 29,
+    //"contractId": 29,
     "created": "06-05-2017 01:43:35",
-    "contractStatus": "CONTRACT_PREPARATION",
-    // "payForm": "CASH",
-    // "payStatus": "UNPAID",
-    "totalAmount": 0,
-    // "customerId": 1,
-    //  "customerType": "INDIVIDUAL",
+    "contractStatus": "EXECUTED",
+    //"payForm": "CASH",
+    //"payStatus": "PAID",
+    "totalAmount": 250,
+    //"customerId": 1,
+    //"customerType": "INDIVIDUAL",
     "customerCompanyName": "Britsko"
-    //  "customerLastName": "Britsko",
-    //  "managerId": 1,
-    //  "managerLastName": "Modified Super_Admin"
+    //"customerLastName": "Britsko",
+    //"managerId": 1,
+    //"managerLastName": "Modified Super_Admin"
   },
   "details": [
     {
-      "contractId": 29,
-      //   "itemVariantId": 0,
-      "itemName": null,
-      "itemVariantPrice": null
-      //  "itemVariantQuantity": 0,
-      // "itemVariantTotalPrice": null
+      //"contractId": 29,
+      //"itemVariantId": 2207,
+      "itemName": "Modified Item: 80",
+      "itemVariantPrice": 10,
+      //"itemVariantQuantity": 7,
+      //"itemVariantTotalPrice": 70
+    },
+    {
+      //"contractId": 29,
+      //"itemVariantId": 2208,
+      "itemName": "Modified Item: 80",
+      "itemVariantPrice": 10,
+      //"itemVariantQuantity": 10,
+      //"itemVariantTotalPrice": 100
+    },
+    {
+      //"contractId": 29,
+      //"itemVariantId": 2209,
+      "itemName": "Modified Item: 79",
+      "itemVariantPrice": 10,
+      //"itemVariantQuantity": 5,
+      //"itemVariantTotalPrice": 50
+    },
+    {
+      //"contractId": 29,
+      //"itemVariantId": 2210,
+      "itemName": "Modified Item: 0",
+      "itemVariantPrice": 10,
+      //"itemVariantQuantity": 3,
+      //"itemVariantTotalPrice": 30
     }
-  ]
+  ],
 }
