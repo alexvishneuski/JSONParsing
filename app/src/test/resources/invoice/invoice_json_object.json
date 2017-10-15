@@ -1,6 +1,3 @@
-# JSONParsing
-Mastering JSONparsing. There has got for instance some json model:
-
 {
   "invoiceNumber": 29,
   "commonInfo": {
@@ -28,4 +25,3 @@ Mastering JSONparsing. There has got for instance some json model:
     }
   ]
 }
-In parsing hav been used as jsonObject as jsonArray
