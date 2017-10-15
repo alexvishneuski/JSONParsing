@@ -1,5 +1,7 @@
 package com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -10,15 +12,19 @@ public class ContractCommonInfo {
 
     // contract attributes
     //private Integer contractId;
+    @SerializedName("created")
     private Timestamp created;
+    @SerializedName("contractStatus")
     private ContractStatus contractStatus;
     //private PayForm payForm;
     //private PayStatus payStatus;
+    @SerializedName("totalAmount")
     private BigDecimal totalAmount;
 
     // customer attributes
     //private Integer customerId;
     //private CustomerType customerType;
+    @SerializedName("customerCompanyName")
     private String customerCompanyName;
     //private String customerLastName;
 
@@ -72,4 +78,13 @@ public class ContractCommonInfo {
 
     }
 
+    @Override
+    public String toString() {
+        return "ContractCommonInfo{" +
+                "created=" + created +
+                ", contractStatus=" + contractStatus +
+                ", totalAmount=" + totalAmount +
+                ", customerCompanyName='" + customerCompanyName + '\'' +
+                '}';
+    }
 }

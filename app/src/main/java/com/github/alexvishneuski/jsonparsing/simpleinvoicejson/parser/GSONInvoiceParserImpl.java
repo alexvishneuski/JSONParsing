@@ -6,12 +6,14 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 
 import java.lang.reflect.Type;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class GSONInvoiceParserImpl implements IInvoiceParser {
 
@@ -24,31 +26,33 @@ public class GSONInvoiceParserImpl implements IInvoiceParser {
     @Override
     public Invoice parse() throws Exception {
 
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        JsonDeserializer<Timestamp> deserializer = new JsonDeserializer<Timestamp>() {
+            @Override
+            public Timestamp deserialize(JsonElement json, Type typeOfT,
+                                         JsonDeserializationContext context) throws JsonParseException {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.ENGLISH);
+                Date parsedDate = null;
+                if (json == null) return null;
+                try {
+                    parsedDate = dateFormat.parse(json.getAsString());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 
-        final Gson gson = new GsonBuilder().registerTypeAdapter(Timestamp.class, new DateTimeDeserializer()).create();
-        return gson.fromJson(mSource, Invoice.class);
-    }
+                Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
 
-    private class DateTimeDeserializer implements JsonDeserializer<Timestamp> {
-        public Timestamp deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) {
+                return timestamp;
 
-            Timestamp timestamp = null;
-
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-            Date parsedDate = null;
-            try {
-                parsedDate = dateFormat.parse(json.toString());
-            } catch (ParseException e) {
-                e.printStackTrace();
             }
-            timestamp = new java.sql.Timestamp(parsedDate.getTime());
-
-            return timestamp;
-
-
-        }
+        };
+        gsonBuilder.registerTypeAdapter(Timestamp.class, deserializer);
+        Gson customGson = gsonBuilder.create();
+        Invoice invoice = customGson.fromJson(mSource, Invoice.class);
+        return invoice;
     }
-
 }
+
+
 
 

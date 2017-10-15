@@ -12,6 +12,7 @@ import com.github.alexvishneuski.jsonparsing.utils.Constants;
 import com.github.alexvishneuski.jsonparsing.utils.IOUtils;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Matchers;
@@ -19,6 +20,9 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 import java.io.InputStream;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -93,13 +97,14 @@ public class InvoiceParserTest {
     public void parseOverGson() throws Exception {
         Log.d(TAG, "Method parseOverGson is started");
         //prepared response with jsonObject
-        InputStream mockedInputStream = Mocks.stream("invoice/invoice_json_object.json");
+        InputStream mockedInputStream = Mocks.stream("invoice/invoice_json_object_2.json");
         when(mHttpClient.request(Matchers.anyString())).thenReturn(mockedInputStream);
         InputStream response = mHttpClient.request("http://myBackEnd/getInvoice?id=29");
 
         //parsed response over GSON
         final Invoice invoice = invoiceParserFactory.createGsonParser(IOUtils.toString(response)).parse();
         assertEquals(29, invoice.getInvoiceNumber().intValue());
+
         assertEquals("06-05-2017 01:43:35", invoice.getCommonInfo().convertFromTimestamp2String(invoice.getCommonInfo().getCreated()));
         assertEquals("EXECUTED", invoice.getCommonInfo().getContractStatus().toString().toUpperCase());
         assertEquals(250, invoice.getCommonInfo().getTotalAmount().intValue());

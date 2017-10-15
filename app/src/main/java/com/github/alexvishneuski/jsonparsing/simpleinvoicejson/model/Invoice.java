@@ -1,15 +1,18 @@
 package com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.List;
 
 public class Invoice implements Serializable {
 
     //id of an invoice
+    @SerializedName("invoiceNumber")
     private Integer invoiceNumber;
-
+    @SerializedName("commonInfo")
     private ContractCommonInfo commonInfo;
-
+    @SerializedName("details")
     private List<ContractDetail> details;
 
     public Invoice() {
@@ -37,5 +40,14 @@ public class Invoice implements Serializable {
 
     public List<ContractDetail> getDetails() {
         return details;
+    }
+
+    @Override
+    public String toString() {
+        return "Invoice{" +
+                "invoiceNumber=" + invoiceNumber +
+                ", commonInfo=" + commonInfo +
+                ", details=" + details +
+                '}';
     }
 }
