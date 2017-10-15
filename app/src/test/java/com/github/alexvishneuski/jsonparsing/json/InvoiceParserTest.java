@@ -5,7 +5,6 @@ import android.util.Log;
 import com.github.alexvishneuski.jsonparsing.BuildConfig;
 import com.github.alexvishneuski.jsonparsing.http.IHttpClient;
 import com.github.alexvishneuski.jsonparsing.mocks.Mocks;
-import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.factory.InvoiceListParserFactory;
 import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.factory.InvoiceParserFactory;
 import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.Invoice;
 import com.github.alexvishneuski.jsonparsing.utils.Constants;
@@ -39,14 +38,12 @@ public class InvoiceParserTest {
     private IHttpClient mHttpClient;
 
     private InvoiceParserFactory invoiceParserFactory;
-    private InvoiceListParserFactory invoiceListParserFactory;
 
     @Before
     //interfaceMocking
     public void setUp() {
         mHttpClient = mock(IHttpClient.class);
         invoiceParserFactory = new InvoiceParserFactory();
-        invoiceListParserFactory = new InvoiceListParserFactory();
     }
 
     @Test
@@ -81,7 +78,7 @@ public class InvoiceParserTest {
 
         //parsed response over JSONA
 
-        final List<Invoice> invoiceList = invoiceListParserFactory.createJsonListParser(response).parce();
+        final List<Invoice> invoiceList = invoiceParserFactory.createJsonListParser(response).parce();
 
         assertTrue(invoiceList.size() == 3);
         assertEquals(29, invoiceList.get(0).getInvoiceNumber().intValue());
@@ -90,10 +87,10 @@ public class InvoiceParserTest {
     }
 
     @Test
-    public void parseJbjectOverGson() throws Exception {
-        Log.d(TAG, "Method parseJbjectOverGson is started");
+    public void parseObjectOverGson() throws Exception {
+        Log.d(TAG, "Method parseObjectOverGson is started");
         //prepared response with jsonObject
-        InputStream mockedInputStream = Mocks.stream("invoice/invoice_json_object_2.json");
+        InputStream mockedInputStream = Mocks.stream("invoice/invoice_json_object.json");
         when(mHttpClient.request(Matchers.anyString())).thenReturn(mockedInputStream);
         InputStream response = mHttpClient.request("http://myBackEnd/getInvoice?id=29");
 
@@ -109,7 +106,7 @@ public class InvoiceParserTest {
         assertEquals("Modified Item: 80", invoice.getDetails().get(0).getItemName());
         assertEquals(10, invoice.getDetails().get(0).getItemVariantPrice().intValue());
 
-        Log.d(TAG, "Method parseJbjectOverGson is finished");
+        Log.d(TAG, "Method parseObjectOverGson is finished");
     }
 
     @Test
@@ -123,7 +120,7 @@ public class InvoiceParserTest {
 
         //parsed response over GSON
 
-        final List<Invoice> invoiceList = invoiceListParserFactory.createGsonListParser(response).parce();
+        final List<Invoice> invoiceList = invoiceParserFactory.createGsonListParser(response).parce();
 
         assertTrue(invoiceList.size() == 3);
         assertEquals(29, invoiceList.get(0).getInvoiceNumber().intValue());

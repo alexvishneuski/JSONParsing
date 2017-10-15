@@ -6,41 +6,35 @@ import java.math.BigDecimal;
 
 public class ContractDetail {
 
-    //private Integer contractId;
-
-    //private Integer itemVariantId;
     @SerializedName("itemName")
-    private String itemName;
+    private String mItemName;
     @SerializedName("itemVariantPrice")
-    private BigDecimal itemVariantPrice;
-    //private Integer itemVariantQuantity;
-    //private BigDecimal itemVariantTotalPrice;
-
+    private BigDecimal mItemVariantPrice;
 
     public ContractDetail() {
     }
 
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
+    public void setItemName(String pItemName) {
+        mItemName = pItemName;
     }
 
-    public void setItemVariantPrice(BigDecimal itemVariantPrice) {
-        this.itemVariantPrice = itemVariantPrice;
+    public void setItemVariantPrice(BigDecimal pItemVariantPrice) {
+        mItemVariantPrice = pItemVariantPrice;
     }
 
     public String getItemName() {
-        return itemName;
+        return mItemName;
     }
 
     public BigDecimal getItemVariantPrice() {
-        return itemVariantPrice;
+        return mItemVariantPrice;
     }
 
     @Override
     public String toString() {
         return "ContractDetail{" +
-                "itemName='" + itemName + '\'' +
-                ", itemVariantPrice=" + itemVariantPrice +
+                "itemName='" + mItemName + '\'' +
+                ", itemVariantPrice=" + mItemVariantPrice +
                 '}';
     }
 }

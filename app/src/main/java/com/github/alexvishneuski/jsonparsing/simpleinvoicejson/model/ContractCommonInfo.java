@@ -11,67 +11,54 @@ import java.util.Locale;
 public class ContractCommonInfo {
 
     // contract attributes
-    //private Integer contractId;
     @SerializedName("created")
-    private Timestamp created;
+    private Timestamp mCreated;
     @SerializedName("contractStatus")
-    private ContractStatus contractStatus;
-    //private PayForm payForm;
-    //private PayStatus payStatus;
+    private ContractStatus mContractStatus;
     @SerializedName("totalAmount")
-    private BigDecimal totalAmount;
+    private BigDecimal mTotalAmount;
 
     // customer attributes
-    //private Integer customerId;
-    //private CustomerType customerType;
     @SerializedName("customerCompanyName")
-    private String customerCompanyName;
-    //private String customerLastName;
-
-    // manager attributes
-    //private Integer managerId;
-    //private String managerLastName;
-
+    private String mCustomerCompanyName;
 
     public ContractCommonInfo() {
     }
 
-
-    public void setCreated(Timestamp created) {
-        this.created = created;
+    public void setCreated(Timestamp pCreated) {
+        mCreated = pCreated;
     }
 
-    public void setContractStatus(ContractStatus contractStatus) {
-        this.contractStatus = contractStatus;
+    public void setContractStatus(ContractStatus pContractStatus) {
+        mContractStatus = pContractStatus;
     }
 
-    public void setTotalAmount(BigDecimal totalAmount) {
-        this.totalAmount = totalAmount;
+    public void setTotalAmount(BigDecimal pTotalAmount) {
+        this.mTotalAmount = pTotalAmount;
     }
 
-    public void setCustomerCompanyName(String customerCompanyName) {
-        this.customerCompanyName = customerCompanyName;
+    public void setCustomerCompanyName(String pCustomerCompanyName) {
+        mCustomerCompanyName = pCustomerCompanyName;
     }
-
 
     public Timestamp getCreated() {
-        return created;
+        return mCreated;
     }
 
     public ContractStatus getContractStatus() {
-        return contractStatus;
+        return mContractStatus;
     }
 
     public BigDecimal getTotalAmount() {
-        return totalAmount;
+        return mTotalAmount;
     }
 
     public String getCustomerCompanyName() {
-        return customerCompanyName;
+        return mCustomerCompanyName;
     }
 
-    public String convertFromTimestamp2String(Timestamp tstmp) {
-        Date date = new Date(tstmp.getTime());
+    public String convertFromTimestamp2String(Timestamp pTstmp) {
+        Date date = new Date(pTstmp.getTime());
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.ENGLISH);
         final String string = dateFormat.format(date);
         return string;
@@ -81,10 +68,10 @@ public class ContractCommonInfo {
     @Override
     public String toString() {
         return "ContractCommonInfo{" +
-                "created=" + created +
-                ", contractStatus=" + contractStatus +
-                ", totalAmount=" + totalAmount +
-                ", customerCompanyName='" + customerCompanyName + '\'' +
+                "created=" + mCreated +
+                ", contractStatus=" + mContractStatus +
+                ", totalAmount=" + mTotalAmount +
+                ", customerCompanyName='" + mCustomerCompanyName + '\'' +
                 '}';
     }
 }

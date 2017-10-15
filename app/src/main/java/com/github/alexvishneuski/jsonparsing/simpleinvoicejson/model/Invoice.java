@@ -7,47 +7,46 @@ import java.util.List;
 
 public class Invoice implements Serializable {
 
-    //id of an invoice
     @SerializedName("invoiceNumber")
-    private Integer invoiceNumber;
+    private Integer mInvoiceNumber;
     @SerializedName("commonInfo")
-    private ContractCommonInfo commonInfo;
+    private ContractCommonInfo mCommonInfo;
     @SerializedName("details")
-    private List<ContractDetail> details;
+    private List<ContractDetail> mDetails;
 
     public Invoice() {
     }
 
-    public void setInvoiceNumber(Integer invoiceNumber) {
-        this.invoiceNumber = invoiceNumber;
+    public void setInvoiceNumber(Integer pInvoiceNumber) {
+        this.mInvoiceNumber = pInvoiceNumber;
     }
 
-    public void setCommonInfo(ContractCommonInfo commonInfo) {
-        this.commonInfo = commonInfo;
+    public void setCommonInfo(ContractCommonInfo pCommonInfo) {
+        mCommonInfo = pCommonInfo;
     }
 
     public void setDetails(List<ContractDetail> details) {
-        this.details = details;
+        mDetails = details;
     }
 
     public Integer getInvoiceNumber() {
-        return invoiceNumber;
+        return mInvoiceNumber;
     }
 
     public ContractCommonInfo getCommonInfo() {
-        return commonInfo;
+        return mCommonInfo;
     }
 
     public List<ContractDetail> getDetails() {
-        return details;
+        return mDetails;
     }
 
     @Override
     public String toString() {
         return "Invoice{" +
-                "invoiceNumber=" + invoiceNumber +
-                ", commonInfo=" + commonInfo +
-                ", details=" + details +
+                "invoiceNumber=" + mInvoiceNumber +
+                ", commonInfo=" + mCommonInfo +
+                ", details=" + mDetails +
                 '}';
     }
 }
