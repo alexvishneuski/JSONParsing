@@ -1,9 +1,9 @@
-package com.github.alexvishneuski.jsonparsing.simpleinvoicejson.parser;
+package com.github.alexvishneuski.jsonparsing.simpleinvoicejson.parser.overJson;
 
-import com.github.alexvishneuski.jsonparsing.json.model.gsonimpl.UserGson;
 import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.ContractCommonInfo;
 import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.ContractDetail;
 import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.Invoice;
+import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.parser.IInvoiceParser;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -78,7 +78,6 @@ public class JSONInvoiceParserImpl implements IInvoiceParser {
         invoice.setDetails(contractDetails);
         return invoice;
     }
-
 
 
     private Timestamp convertFromJSONToTimestamp(String date) throws Exception {

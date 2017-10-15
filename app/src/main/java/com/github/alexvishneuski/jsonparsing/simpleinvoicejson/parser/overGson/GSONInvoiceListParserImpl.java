@@ -1,6 +1,8 @@
-package com.github.alexvishneuski.jsonparsing.simpleinvoicejson.parser;
+package com.github.alexvishneuski.jsonparsing.simpleinvoicejson.parser.overGson;
 
 import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.Invoice;
+import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.parser.IInvoiceListParser;
+import com.github.alexvishneuski.jsonparsing.utils.IOUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
@@ -8,24 +10,27 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 
+import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
-public class GSONInvoiceParserImpl implements IInvoiceParser {
+public class GSONInvoiceListParserImpl implements IInvoiceListParser {
 
-    private final String mSource;
+    private final InputStream mInputStream;
 
-    public GSONInvoiceParserImpl(final String pSource) {
-        mSource = pSource;
+    public GSONInvoiceListParserImpl(InputStream pInputStream) {
+        this.mInputStream = pInputStream;
     }
 
     @Override
-    public Invoice parse() throws Exception {
-
+    public List<Invoice> parce() throws Exception {
         GsonBuilder gsonBuilder = new GsonBuilder();
         JsonDeserializer<Timestamp> deserializer = new JsonDeserializer<Timestamp>() {
             @Override
@@ -48,11 +53,8 @@ public class GSONInvoiceParserImpl implements IInvoiceParser {
         };
         gsonBuilder.registerTypeAdapter(Timestamp.class, deserializer);
         Gson customGson = gsonBuilder.create();
-        Invoice invoice = customGson.fromJson(mSource, Invoice.class);
-        return invoice;
+        Invoice[] invoicesArr = customGson.fromJson(IOUtils.toString(mInputStream), Invoice[].class);
+        List<Invoice> invoices = new ArrayList<>((Arrays.asList(invoicesArr)));
+        return invoices;
     }
 }
-
-
-
-

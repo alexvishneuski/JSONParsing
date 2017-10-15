@@ -1,8 +1,5 @@
-package com.github.alexvishneuski.jsonparsing.json.parser.gsonparserimpl;
+package com.github.alexvishneuski.jsonparsing.json;
 
-import com.github.alexvishneuski.jsonparsing.json.model.IUsersList;
-import com.github.alexvishneuski.jsonparsing.json.model.gsonimpl.UsersListWithObjectGson;
-import com.github.alexvishneuski.jsonparsing.json.parser.IUserListParser;
 import com.google.gson.Gson;
 
 import java.io.InputStream;
@@ -20,11 +17,6 @@ public class UserListGsonParserWithObject implements IUserListParser {
     @Override
     public IUsersList parse() throws Exception {
         Reader reader = new InputStreamReader(mIntputStream);
-        //return new Gson().fromJson(reader, UsersListWithObjectGson.class);
-
         return new Gson().fromJson(reader, UsersListWithObjectGson.class);
-
-
-
     }
 }

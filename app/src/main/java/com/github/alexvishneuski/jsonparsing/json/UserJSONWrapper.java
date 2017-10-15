@@ -1,10 +1,8 @@
-package com.github.alexvishneuski.jsonparsing.json.model.jsonimpl;
-
-import com.github.alexvishneuski.jsonparsing.json.model.IUser;
+package com.github.alexvishneuski.jsonparsing.json;
 
 import org.json.JSONObject;
 
-public class UserJSONWrapper implements IUser {
+class UserJSONWrapper implements IUser {
 
     private static final String ID = "id";
     private static final String NAME = "name";
@@ -12,7 +10,7 @@ public class UserJSONWrapper implements IUser {
 
     private final JSONObject mJsonObject;
 
-    public UserJSONWrapper(final JSONObject pJsonObject) {
+    UserJSONWrapper(final JSONObject pJsonObject) {
         mJsonObject = pJsonObject;
     }
 

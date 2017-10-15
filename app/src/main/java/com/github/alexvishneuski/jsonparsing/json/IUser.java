@@ -1,4 +1,4 @@
-package com.github.alexvishneuski.jsonparsing.json.model;
+package com.github.alexvishneuski.jsonparsing.json;
 
 public interface IUser {
 
