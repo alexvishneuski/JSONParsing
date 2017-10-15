@@ -17,8 +17,5 @@ public class GSONInvoiceParserImpl implements IInvoiceParser {
         return null;
     }
 
-    @Override
-    public List<Invoice> parce() throws Exception {
-        return null;
-    }
+
 }

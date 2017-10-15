@@ -2,9 +2,9 @@ package com.github.alexvishneuski.jsonparsing.simpleinvoicejson.parser;
 
 import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.Invoice;
 
-public interface IInvoiceParser {
+import java.util.List;
 
-    Invoice parse() throws Exception;
+public interface IInvoiceListParser {
 
-
+    List<Invoice> parce() throws Exception;
 }

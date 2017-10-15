@@ -1,5 +1,6 @@
 package com.github.alexvishneuski.jsonparsing.simpleinvoicejson.parser;
 
+import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.ContractCommonInfo;
 import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.ContractDetail;
 import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.Invoice;
 
@@ -12,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import static com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.ContractStatus.valueOf;
 
@@ -47,22 +49,25 @@ public class JSONInvoiceParserImpl implements IInvoiceParser {
         invoice.setInvoiceNumber(jsonInvoice.optInt(INVOICE_NUMBER));
 
         //obtaining contract common info
+        ContractCommonInfo info = new ContractCommonInfo();
         //obtaining of invoice number
         //invoice.getCommonInfo().setContractId(jsonInvoice.optJSONObject(COMMON_INFO).optInt(CONTRACT_ID));
         //obtaining of created
-        invoice.getCommonInfo().setCreated(convertFromJSONToTimestamp(jsonInvoice.optJSONObject(COMMON_INFO).optString(CREATED)));
+        info.setCreated(convertFromJSONToTimestamp(jsonInvoice.optJSONObject(COMMON_INFO).optString(CREATED)));
         //obtaining of contract status
-        invoice.getCommonInfo().setContractStatus(valueOf(jsonInvoice.optJSONObject(COMMON_INFO).optString(CONTRACT_STATUS).toUpperCase()));
+        info.setContractStatus(valueOf(jsonInvoice.optJSONObject(COMMON_INFO).optString(CONTRACT_STATUS).toUpperCase()));
         //obtaining totalAmount
-        invoice.getCommonInfo().setTotalAmount(new BigDecimal(jsonInvoice.optJSONObject(COMMON_INFO).optInt(TOTAL_AMOUNT)));
+        info.setTotalAmount(new BigDecimal(jsonInvoice.optJSONObject(COMMON_INFO).optInt(TOTAL_AMOUNT)));
         //obtaining customerCompanyName
-        invoice.getCommonInfo().setCustomerCompanyName(jsonInvoice.optJSONObject(COMMON_INFO).optString(CUSTOMER_COMPANY_NAME));
+        info.setCustomerCompanyName(jsonInvoice.optJSONObject(COMMON_INFO).optString(CUSTOMER_COMPANY_NAME));
+
+        invoice.setCommonInfo(info);
 
         //obtaining array of contract details
         List<ContractDetail> contractDetails = new ArrayList<>();
 
         JSONArray jsonDetailsArray = jsonInvoice.optJSONArray(DETAILS);
-        ContractDetail contractDetail = null;
+        ContractDetail contractDetail = new ContractDetail();
         if (jsonDetailsArray != null) for (int i = 0; i < jsonDetailsArray.length(); i++) {
             JSONObject jsonDetail = jsonDetailsArray.optJSONObject(i);
             contractDetail.setItemName(jsonDetail.optString(ITEM_NAME));
@@ -74,15 +79,11 @@ public class JSONInvoiceParserImpl implements IInvoiceParser {
     }
 
 
-    @Override
-    public List<Invoice> parce() throws Exception {
-        return null;
-    }
 
     private Timestamp convertFromJSONToTimestamp(String date) throws Exception {
         Timestamp timestamp;
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.ENGLISH);
         Date parsedDate = dateFormat.parse(date);
         timestamp = new java.sql.Timestamp(parsedDate.getTime());
 

@@ -2,6 +2,9 @@ package com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class ContractCommonInfo {
 
@@ -60,4 +63,13 @@ public class ContractCommonInfo {
     public String getCustomerCompanyName() {
         return customerCompanyName;
     }
+
+    public String convertFromTimestamp2String(Timestamp tstmp) {
+        Date date = new Date(tstmp.getTime());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.ENGLISH);
+        final String string = dateFormat.format(date);
+        return string;
+
+    }
+
 }

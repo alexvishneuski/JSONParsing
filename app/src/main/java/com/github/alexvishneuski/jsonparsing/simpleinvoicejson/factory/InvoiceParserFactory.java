@@ -1,11 +1,11 @@
 package com.github.alexvishneuski.jsonparsing.simpleinvoicejson.factory;
 
-import com.github.alexvishneuski.jsonparsing.json.parser.IUserParser;
-import com.github.alexvishneuski.jsonparsing.json.parser.gsonparserimpl.UserGsonParser;
-import com.github.alexvishneuski.jsonparsing.json.parser.jsonparserimpl.UserJsonObjectParser;
 import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.parser.GSONInvoiceParserImpl;
+import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.parser.IInvoiceListParser;
 import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.parser.IInvoiceParser;
 import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.parser.JSONInvoiceParserImpl;
+
+import java.io.InputStream;
 
 
 public class InvoiceParserFactory {
@@ -20,4 +20,4 @@ public class InvoiceParserFactory {
         return new GSONInvoiceParserImpl(pSource);
     }
 
-}
+    }

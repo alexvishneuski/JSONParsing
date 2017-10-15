@@ -1,0 +1,20 @@
+package com.github.alexvishneuski.jsonparsing.simpleinvoicejson.parser;
+
+import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.Invoice;
+
+import java.io.InputStream;
+import java.util.List;
+
+public class GSONInvoiceListParserImpl implements IInvoiceListParser {
+
+    private final InputStream mInputStream;
+
+    public GSONInvoiceListParserImpl(InputStream pInputStream) {
+        this.mInputStream = pInputStream;
+    }
+
+    @Override
+    public List<Invoice> parce() throws Exception {
+        return null;
+    }
+}
