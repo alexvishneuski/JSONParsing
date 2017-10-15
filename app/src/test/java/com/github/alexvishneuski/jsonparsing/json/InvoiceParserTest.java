@@ -12,7 +12,6 @@ import com.github.alexvishneuski.jsonparsing.utils.Constants;
 import com.github.alexvishneuski.jsonparsing.utils.IOUtils;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Matchers;
@@ -20,9 +19,6 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 import java.io.InputStream;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -54,8 +50,8 @@ public class InvoiceParserTest {
     }
 
     @Test
-    public void parseOverJsonObject() throws Exception {
-        Log.d(TAG, "Method parseOverJsonObject is started");
+    public void parseObjectOverJson() throws Exception {
+        Log.d(TAG, "Method parseObjectOverJson is started");
         //prepared response with jsonObject
         InputStream mockedInputStream = Mocks.stream("invoice/invoice_json_object.json");
         when(mHttpClient.request(Matchers.anyString())).thenReturn(mockedInputStream);
@@ -71,31 +67,31 @@ public class InvoiceParserTest {
         assertEquals(4, invoice.getDetails().size());
         assertEquals("Modified Item: 80", invoice.getDetails().get(0).getItemName());
         assertEquals(10, invoice.getDetails().get(0).getItemVariantPrice().intValue());
-        Log.d(TAG, "Method parseOverJsonObject is finished");
+        Log.d(TAG, "Method parseObjectOverJson is finished");
     }
 
     @Test
-    public void parseOverJsonArray() throws Exception {
-        Log.d(TAG, "Method parseOverJsonArray is started");
+    public void parseArrayOverJson() throws Exception {
+        Log.d(TAG, "Method parseArrayOverJson is started");
 
         //prepared response with jsonArray
         InputStream mockedInputStream = Mocks.stream("invoice/invoice_json_array.json");
         when(mHttpClient.request(Matchers.anyString())).thenReturn(mockedInputStream);
         InputStream response = mHttpClient.request("http://myBackend/getInvoiceList");
 
-        //parsed response over JSONArray
+        //parsed response over JSONA
 
         final List<Invoice> invoiceList = invoiceListParserFactory.createJsonListParser(response).parce();
 
         assertTrue(invoiceList.size() == 3);
         assertEquals(29, invoiceList.get(0).getInvoiceNumber().intValue());
         assertNotNull(invoiceList.get(1));
-        Log.d(TAG, "Method parseOverJsonArray is finished");
+        Log.d(TAG, "Method parseArrayOverJson is finished");
     }
 
     @Test
-    public void parseOverGson() throws Exception {
-        Log.d(TAG, "Method parseOverGson is started");
+    public void parseJbjectOverGson() throws Exception {
+        Log.d(TAG, "Method parseJbjectOverGson is started");
         //prepared response with jsonObject
         InputStream mockedInputStream = Mocks.stream("invoice/invoice_json_object_2.json");
         when(mHttpClient.request(Matchers.anyString())).thenReturn(mockedInputStream);
@@ -113,6 +109,25 @@ public class InvoiceParserTest {
         assertEquals("Modified Item: 80", invoice.getDetails().get(0).getItemName());
         assertEquals(10, invoice.getDetails().get(0).getItemVariantPrice().intValue());
 
-        Log.d(TAG, "Method parseOverGson is finished");
+        Log.d(TAG, "Method parseJbjectOverGson is finished");
+    }
+
+    @Test
+    public void parseArrayOverGson() throws Exception {
+        Log.d(TAG, "Method parseArrayOverGson is started");
+
+        //prepared response with jsonArray
+        InputStream mockedInputStream = Mocks.stream("invoice/invoice_json_array.json");
+        when(mHttpClient.request(Matchers.anyString())).thenReturn(mockedInputStream);
+        InputStream response = mHttpClient.request("http://myBackend/getInvoiceList");
+
+        //parsed response over GSON
+
+        final List<Invoice> invoiceList = invoiceListParserFactory.createGsonListParser(response).parce();
+
+        assertTrue(invoiceList.size() == 3);
+        assertEquals(29, invoiceList.get(0).getInvoiceNumber().intValue());
+        assertNotNull(invoiceList.get(1));
+        Log.d(TAG, "Method parseArrayOverGson is finished");
     }
 }

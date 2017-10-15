@@ -23,16 +23,11 @@ public class JSONInvoiceListParserImpl implements IInvoiceListParser {
     public List<Invoice> parce() throws Exception {
 
         JSONArray jsonArray = new JSONArray(IOUtils.toString(mInputStream));
-
-        System.out.println(jsonArray);
-
         List<Invoice> invoices = new ArrayList<>();
         Invoice invoice;
 
         for (int n = 0; n < jsonArray.length(); n++) {
             JSONObject invoiceJSON = jsonArray.getJSONObject(n);
-            System.out.println(invoiceJSON);
-
             invoice = new InvoiceParserFactory().createJsonParser(invoiceJSON.toString()).parse();
             invoices.add(invoice);
 
