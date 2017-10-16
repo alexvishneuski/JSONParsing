@@ -1,8 +1,8 @@
-package com.github.alexvishneuski.jsonparsing.simpleinvoicejson.parser.overJson;
+package com.github.alexvishneuski.jsonparsing.jsonparsers.invoiceparsers.parser.overJson;
 
-import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.factory.InvoiceParserFactory;
-import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.customentities.Invoice;
-import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.parser.IInvoiceListParser;
+import com.github.alexvishneuski.jsonparsing.jsonparsers.invoiceparsers.InvoiceParserFactory;
+import com.github.alexvishneuski.jsonparsing.model.customentities.Invoice;
+import com.github.alexvishneuski.jsonparsing.jsonparsers.invoiceparsers.parser.IInvoiceListParser;
 import com.github.alexvishneuski.jsonparsing.utils.IOUtils;
 
 import org.json.JSONArray;

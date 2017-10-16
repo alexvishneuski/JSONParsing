@@ -1,4 +1,4 @@
-package com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.datamodel;
+package com.github.alexvishneuski.jsonparsing.model.datamodel;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,6 +1,6 @@
-package com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.customentities;
+package com.github.alexvishneuski.jsonparsing.model.customentities;
 
-import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.datamodel.ContractStatus;
+import com.github.alexvishneuski.jsonparsing.model.datamodel.ContractStatus;
 import com.google.gson.annotations.SerializedName;
 
 import java.math.BigDecimal;

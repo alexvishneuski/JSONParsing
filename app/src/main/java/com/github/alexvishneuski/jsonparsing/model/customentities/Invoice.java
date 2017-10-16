@@ -1,4 +1,4 @@
-package com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.customentities;
+package com.github.alexvishneuski.jsonparsing.model.customentities;
 
 import com.google.gson.annotations.SerializedName;
 

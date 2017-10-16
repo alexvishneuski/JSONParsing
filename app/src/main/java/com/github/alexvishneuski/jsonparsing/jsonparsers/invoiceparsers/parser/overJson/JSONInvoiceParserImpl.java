@@ -1,9 +1,9 @@
-package com.github.alexvishneuski.jsonparsing.simpleinvoicejson.parser.overJson;
+package com.github.alexvishneuski.jsonparsing.jsonparsers.invoiceparsers.parser.overJson;
 
-import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.customentities.ContractCommonInfo;
-import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.customentities.ContractDetail;
-import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.customentities.Invoice;
-import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.parser.IInvoiceParser;
+import com.github.alexvishneuski.jsonparsing.model.customentities.ContractCommonInfo;
+import com.github.alexvishneuski.jsonparsing.model.customentities.ContractDetail;
+import com.github.alexvishneuski.jsonparsing.model.customentities.Invoice;
+import com.github.alexvishneuski.jsonparsing.jsonparsers.invoiceparsers.parser.IInvoiceParser;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import static com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.datamodel.ContractStatus.valueOf;
+import static com.github.alexvishneuski.jsonparsing.model.datamodel.ContractStatus.valueOf;
 
 public class JSONInvoiceParserImpl implements IInvoiceParser {
 
