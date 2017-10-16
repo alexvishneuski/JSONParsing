@@ -1,6 +1,6 @@
 package com.github.alexvishneuski.jsonparsing.simpleinvoicejson.parser;
 
-import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.Invoice;
+import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.customentities.Invoice;
 
 import java.util.List;
 

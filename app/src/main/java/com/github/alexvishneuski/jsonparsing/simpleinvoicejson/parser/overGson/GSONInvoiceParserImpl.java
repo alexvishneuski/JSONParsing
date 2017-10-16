@@ -1,6 +1,6 @@
 package com.github.alexvishneuski.jsonparsing.simpleinvoicejson.parser.overGson;
 
-import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.Invoice;
+import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.customentities.Invoice;
 import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.parser.IInvoiceParser;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

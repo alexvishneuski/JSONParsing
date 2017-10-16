@@ -6,7 +6,7 @@ import com.github.alexvishneuski.jsonparsing.BuildConfig;
 import com.github.alexvishneuski.jsonparsing.http.IHttpClient;
 import com.github.alexvishneuski.jsonparsing.mocks.Mocks;
 import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.factory.InvoiceParserFactory;
-import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.Invoice;
+import com.github.alexvishneuski.jsonparsing.simpleinvoicejson.model.customentities.Invoice;
 import com.github.alexvishneuski.jsonparsing.utils.Constants;
 import com.github.alexvishneuski.jsonparsing.utils.IOUtils;
 
