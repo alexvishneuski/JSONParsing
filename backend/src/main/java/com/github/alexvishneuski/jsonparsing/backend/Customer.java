@@ -1,11 +1,15 @@
-package com.github.alexvishneuski.jsonparsing.model.datamodel;
+package com.github.alexvishneuski.jsonparsing.backend;
 
-import com.google.gson.annotations.SerializedName;
+import com.google.appengine.repackaged.com.google.gson.annotations.SerializedName;
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
 
+@Entity
 public class Customer {
 
+    @Id
     @SerializedName("id")
-    private Integer mId;
+    private Long mId;
     @SerializedName("firstName")
     private String mFirstName;
     @SerializedName("patronymic")
@@ -23,77 +27,54 @@ public class Customer {
     @SerializedName("managerId")
     private Integer mManagerId;
 
-    public Integer getId() {
-        return mId;
+    public Customer() {
     }
 
-    public void setId(Integer id) {
-        mId = id;
+    public Customer(Long pId, String pFirstName, String pPatronymic, String pLastName, String pCompanyName, String pAddress, String pPhoneNumber, Integer pCustomerGroupId, Integer pManagerId) {
+        this.mId = pId;
+        this.mFirstName = pFirstName;
+        this.mPatronymic = pPatronymic;
+        this.mLastName = pLastName;
+        this.mCompanyName = pCompanyName;
+        this.mAddress = pAddress;
+        this.mPhoneNumber = pPhoneNumber;
+        this.mCustomerGroupId = pCustomerGroupId;
+        this.mManagerId = pManagerId;
+    }
+
+    public Long getId() {
+        return mId;
     }
 
     public String getFirstName() {
         return mFirstName;
     }
 
-    public void setFirstName(String firstName) {
-        mFirstName = firstName;
-    }
-
     public String getPatronymic() {
         return mPatronymic;
-    }
-
-    public void setPatronymic(String patronymic) {
-        mPatronymic = patronymic;
     }
 
     public String getLastName() {
         return mLastName;
     }
 
-    public void setLastName(String lastName) {
-        mLastName = lastName;
-    }
-
     public String getCompanyName() {
         return mCompanyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        mCompanyName = companyName;
     }
 
     public String getAddress() {
         return mAddress;
     }
 
-    public void setAddress(String address) {
-        mAddress = address;
-    }
-
     public String getPhoneNumber() {
         return mPhoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        mPhoneNumber = phoneNumber;
     }
 
     public Integer getCustomerGroupId() {
         return mCustomerGroupId;
     }
 
-    public void setCustomerGroupId(Integer customerGroupId) {
-        mCustomerGroupId = customerGroupId;
-    }
-
     public Integer getManagerId() {
         return mManagerId;
     }
-
-    public void setManagerId(Integer managerId) {
-        mManagerId = managerId;
-    }
-
-
 }
